@@ -1,0 +1,143 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;  THis is a replacement file for the default config
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+[bar/mybar]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 37 
+background = #000000
+foreground = #ffffff
+border-size = 4 
+border-color = #000000
+
+font-0 = "Lekton Nerd Font Mono:size=9"
+font-1 = "FontAwesome:size=9"
+font-2 = "Material Icons:size=9"
+font-3 = "FuraMono Nerd Font Mono:size=9"
+
+modules-left = i3 
+modules-center = title
+modules-right = wlan battery pulseaudio time power-menu
+padding = 1.1 
+
+underline-size = 2 
+fixed-center = true
+module-margin-right = 2
+dpi = 227
+
+;MODULES
+
+[module/title]
+type = internal/xwindow
+format = <label>
+label = %title%
+label-maxlen = 50
+
+
+[module/time]
+type = internal/date
+interval = 1.0
+time = %H:%M
+date = %d-%m-%Y
+format = <label>
+label = %date% %time% 
+
+format-underline = #5778ed
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-background = #000000
+label-mode-padding = 1
+
+label-focused = %index%
+label-focused-foreground = #ffffff
+label-focused-background = #000000
+label-focused-underline = #ffffff
+label-focused-padding = 1 
+
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = true
+interval = 1
+
+format-muted = <label-muted>
+format-volume = <ramp-volume> <label-volume>
+
+label-muted =  MUTED
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+format-volume-underline = #f7e97e
+format-muted-underline = #e77ef7
+
+[module/power-menu]
+type = custom/menu
+expand-right = true
+label-separator =" | "
+
+label-open =  
+label-close =  
+
+menu-0-0 =  
+menu-0-0-exec = systemctl suspend
+menu-0-1 =  
+menu-0-1-exec = systemctl reboot
+menu-0-2 = 
+menu-0-2-exec = systemctl shutdown
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = ADP1
+poll-interval = 1
+time-format = %H:%M
+
+format-charging = <ramp-capacity> <label-charging>
+format-charging-underline = #42f4c5
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = #f44242
+label-discharging = %percentage%%
+label-charging =  %percentage%%
+
+ramp-capacity-0 =   
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-10 = 
+
+[module/wlan]
+type = internal/network 
+interface = wlan0
+interval = 3.0
+
+format-connected = <label-connected>
+label-connected =  
+label-connected-underline = #7eedf7
+
+; Global Settings ; 
+margin-top = 5
+margin-bottom = 5
