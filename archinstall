@@ -1,0 +1,12 @@
+Macbook Pro install 
+
+nosetmode
+
+# latarcyrheb-sun32 # increases font size  in installation console
+
+# timedatectl set-ntp true
+
+Partitioning
+
+/dev/sda3 vfat  1G    /boot
+/dev/sda4 EXT4  Rest  /
